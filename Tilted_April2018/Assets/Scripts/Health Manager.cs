@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class HealthManager : MonoBehaviour, IDamageable {
 
+    public enum State
+    {
+        Alive,
+        Dead
+    };
+
     public float Health
     {
         get
@@ -21,16 +27,24 @@ public class HealthManager : MonoBehaviour, IDamageable {
             }
         }
     }
+
+    public State state;
     
     [SerializeField] float health;
 
     public void TakeDamage(float damage)
     {
-        Health = damage;
+        if(state == State.Alive) Health = damage;
+    }
+
+    void Start()
+    {
+        state = State.Alive;
     }
 
     void Die()
     {
-        Destroy(gameObject);
+        state = State.Dead;
+        gameObject.SetActive(false);
     }
 }
