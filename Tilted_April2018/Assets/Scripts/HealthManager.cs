@@ -28,7 +28,7 @@ public class HealthManager : MonoBehaviour, IDamageable {
         }
     }
 
-    public State state;
+    [HideInInspector] public State state;
     
     [SerializeField] float health;
 
