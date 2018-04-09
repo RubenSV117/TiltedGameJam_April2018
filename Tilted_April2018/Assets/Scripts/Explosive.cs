@@ -10,7 +10,7 @@ public class Explosive : MonoBehaviour {
     //hurt the player we have stored
     public void Explode() {
         if (_damageableObj != null) {
-            _damageableObj.TakeDamage(999f);
+            _damageableObj.TakeDamage(10f);
             _damageableObj = null;
         }
     }

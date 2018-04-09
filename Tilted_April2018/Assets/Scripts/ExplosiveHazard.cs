@@ -46,7 +46,7 @@ public class ExplosiveHazard : MonoBehaviour
         {
             if (inRadius)
             {
-                print("currentTic = " + currentTic);
+                //print("currentTic = " + currentTic);
                 currentTic++;
             }
             else
@@ -54,12 +54,12 @@ public class ExplosiveHazard : MonoBehaviour
 
             if (!inRadius && currentTic <= 0)
             {
-                print("exit Radius");
+                //print("exit Radius");
                 StopCoroutine(exploCo);
             }
             if (inRadius && currentTic >= maxExplosionTic)
             {
-                print("explode");
+                //print("explode");
                 Explode(player);       
 
                 StopCoroutine(exploCo);

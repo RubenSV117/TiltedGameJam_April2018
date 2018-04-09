@@ -24,6 +24,7 @@ public class HealthManager : MonoBehaviour, IDamageable {
             if(health == 0f)
             {
                 Die();
+                Debug.Log("You Died!!");
             }
         }
     }
