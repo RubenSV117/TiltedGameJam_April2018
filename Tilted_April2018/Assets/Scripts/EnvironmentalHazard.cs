@@ -5,8 +5,7 @@ using UnityEngine;
 public class EnvironmentalHazard : MonoBehaviour
 {
     // Flat damage or DoT or both
-    public bool instantDamage;
-    public bool damageOverTime;
+    public bool IsInstantDamage;
 
     // Vals to hit
     public float flatDamage;
@@ -19,18 +18,12 @@ public class EnvironmentalHazard : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(instantDamage)
-        {
-            if(other.GetComponent<Collider>().CompareTag("Player"))
-            {
+        if (other.gameObject.tag == "Player") {
+            if (IsInstantDamage) {
                 other.GetComponent<HealthManager>().TakeDamage(flatDamage);
             }
-        }
 
-        if (damageOverTime)
-        {
-            if (other.GetComponent<Collider>().CompareTag("Player"))
-            {
+            else {
                 //Start coroutine
                 dotCo = StartCoroutine(DoT(other.gameObject));
             }
@@ -39,10 +32,8 @@ public class EnvironmentalHazard : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (damageOverTime)
-        {
-            if (other.GetComponent<Collider>().CompareTag("Player"))
-            {
+        if (other.gameObject.tag == "Player") {
+            if (!IsInstantDamage) {
                 StopCoroutine(dotCo);
             }
         }
