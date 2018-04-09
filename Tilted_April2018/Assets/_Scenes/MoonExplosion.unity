@@ -65702,7 +65702,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 5.6746583
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -95949,7 +95949,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-15808
+  m_Name: pb_Mesh52084
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
