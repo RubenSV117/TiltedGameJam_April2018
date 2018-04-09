@@ -19,7 +19,7 @@ public class HealthManager : MonoBehaviour, IDamageable {
         private set
         {
             health -= value;
-            Mathf.Clamp(health, 0f, 10f);
+            health = Mathf.Clamp(health, 0f, 10f);
 
             if(health == 0f)
             {

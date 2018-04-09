@@ -52,6 +52,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circleRadius: 10
-  enemy: {fileID: 0}
+  enemy: {fileID: 1671776416445200, guid: 575fa9618f2e83146a9d2b2d784cc2e1, type: 2}
   maxEnemies: 5
   spawnTimer: 1
