@@ -113,6 +113,24 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 4048a91321ef75349a690b7cbaa99f37, type: 2}
+--- !u!1 &176711201 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1456139899457810, guid: 9515d8e6b5e9f66439b495e9fdc14e37,
+    type: 2}
+  m_PrefabInternal: {fileID: 1477550007}
+--- !u!114 &176711204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 176711201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66468556ddd4cc74f84280328e9b67f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  health: 10
 --- !u!1001 &193802610
 Prefab:
   m_ObjectHideFlags: 0
@@ -490,7 +508,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4644238992365824, guid: 3734db0956d7cd642a4d27a7147ca977, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -0.4807259
+      value: -0.48072588
       objectReference: {fileID: 0}
     - target: {fileID: 4644238992365824, guid: 3734db0956d7cd642a4d27a7147ca977, type: 2}
       propertyPath: m_LocalRotation.y
@@ -498,7 +516,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4644238992365824, guid: 3734db0956d7cd642a4d27a7147ca977, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.008390899
+      value: 0.0083908625
       objectReference: {fileID: 0}
     - target: {fileID: 4644238992365824, guid: 3734db0956d7cd642a4d27a7147ca977, type: 2}
       propertyPath: m_LocalRotation.w
@@ -577,11 +595,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4948934095239372, guid: 3734db0956d7cd642a4d27a7147ca977, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.00000047683716
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4948934095239372, guid: 3734db0956d7cd642a4d27a7147ca977, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -0.0000019073486
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3734db0956d7cd642a4d27a7147ca977, type: 2}
@@ -691,6 +709,11 @@ Prefab:
     - target: {fileID: 1456139899457810, guid: 9515d8e6b5e9f66439b495e9fdc14e37, type: 2}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 23462123763010516, guid: 9515d8e6b5e9f66439b495e9fdc14e37,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9515d8e6b5e9f66439b495e9fdc14e37, type: 2}

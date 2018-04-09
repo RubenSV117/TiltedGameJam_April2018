@@ -22,10 +22,12 @@ public class CircleSpawner : MonoBehaviour {
 
     void Spawn()
     {
-        GlobalSpawnController.AddEnemy(enemy);
-        enemies.Add(enemy);
         Vector3 pos = new Vector3(Random.insideUnitCircle.x * circleRadius, 0, Random.insideUnitCircle.y * circleRadius) + transform.position;
-        Instantiate(enemy, pos, transform.rotation);
+        GameObject enem = Instantiate(enemy, pos, transform.rotation).gameObject;
+
+        GlobalSpawnController.AddEnemy(enem);
+        enemies.Add(enem);
+        enem.GetComponent<JalepenoEntity>().spawner = gameObject;
     }
 
     void Respawn()
@@ -33,7 +35,7 @@ public class CircleSpawner : MonoBehaviour {
         GameObject enem = respawnEnemies.Pop();
         Vector3 pos = new Vector3(Random.insideUnitCircle.x * circleRadius, 0, Random.insideUnitCircle.x * circleRadius) + transform.position;
         enem.transform.position = pos;
-        enem.SetActive(true);
+        enem.GetComponent<JalepenoEntity>().JalState = JalepenoEntity.State.Alive;
     }
 
     IEnumerator CoActivateSpawnEnemy()

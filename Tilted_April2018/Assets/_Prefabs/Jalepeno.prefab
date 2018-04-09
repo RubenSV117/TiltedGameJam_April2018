@@ -129,6 +129,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 3
   _explosionDelay: 2
+  respawnTimer: 2
+  spawner: {fileID: 0}
   explosionRadius: 3
   NMAgent: {fileID: 195842108563353066}
   explosion: {fileID: 114880107777625698}

@@ -9,13 +9,40 @@ public class JalepenoEntity : MonoBehaviour {
     protected float _speed = 3.0f;
     [SerializeField]
     protected float _explosionDelay = 0.8f;
+    [SerializeField]
+    float respawnTimer;
 
+    [HideInInspector] public GameObject spawner;
     public float explosionRadius = 2.0f;
     public NavMeshAgent NMAgent;
     public Explosive explosion;
     protected GameObject _playerObject;
     private Vector3 _dir;
     private bool _mobile = true;
+
+    Coroutine coExplode;
+    Coroutine coWaitToRespawn;
+
+    private State jalState;
+
+    public State JalState
+    {
+        get
+        {
+            return jalState;
+        }
+        set
+        {
+            gameObject.GetComponent<MeshRenderer>().enabled = value == State.Alive ? true : false;
+            jalState = value;
+        }
+    }
+
+    public enum State
+    {
+        Alive,
+        Dead
+    };
 
     // Use this for initialization
     void Start() {
@@ -24,8 +51,12 @@ public class JalepenoEntity : MonoBehaviour {
     }
 
     void Update() {
-        if (_mobile) {
-            ChasePlayer();
+        if(JalState == State.Alive)
+        {
+            if (_mobile)
+            {
+                ChasePlayer();
+            }
         }
     }
 
@@ -35,13 +66,16 @@ public class JalepenoEntity : MonoBehaviour {
     /// else chase
     /// </summary>
     public void ChasePlayer() {
-        if (Vector3.Distance(_playerObject.transform.position, transform.position) <= explosionRadius * 0.85f) {
+        if (Vector3.Distance(_playerObject.transform.position, transform.position) <= explosionRadius * 0.85f && _playerObject.activeSelf) {
             _mobile = false;
-            StartCoroutine(Explode());
+            coExplode = StartCoroutine(Explode());
         }
         else {
-            _dir = (_playerObject.transform.position - transform.position).normalized;
-            NMAgent.Move(_dir * _speed * Time.deltaTime);
+            if(_playerObject.activeSelf)
+            {
+                _dir = (_playerObject.transform.position - transform.position).normalized;
+                NMAgent.Move(_dir * _speed * Time.deltaTime);
+            }
         }
     }
 
@@ -53,7 +87,20 @@ public class JalepenoEntity : MonoBehaviour {
         yield return new WaitForSeconds(_explosionDelay);
         explosion.Explode();
         yield return new WaitForSeconds(0.1f);
-        //delete self here
+        Die();
     }
 
+    IEnumerator WaitToRespawn()
+    {
+        yield return new WaitForSeconds(respawnTimer);
+        spawner.GetComponent<CircleSpawner>().AddToRespawnList(gameObject);
+        StopCoroutine(coWaitToRespawn);
+    }
+
+    void Die()
+    {
+        StopCoroutine(coExplode);
+        coWaitToRespawn = StartCoroutine(WaitToRespawn());
+        JalState = State.Dead;
+    }
 }
