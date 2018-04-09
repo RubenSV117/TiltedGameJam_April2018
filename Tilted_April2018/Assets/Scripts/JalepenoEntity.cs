@@ -20,6 +20,7 @@ public class JalepenoEntity : MonoBehaviour {
     private Vector3 _dir;
     private bool _mobile = true;
 
+<<<<<<< HEAD
     Coroutine coExplode;
     Coroutine coWaitToRespawn;
 
@@ -44,8 +45,12 @@ public class JalepenoEntity : MonoBehaviour {
         Dead
     };
 
+=======
+    private AudioSource _audio;
+>>>>>>> master
     // Use this for initialization
     void Start() {
+        _audio = GetComponent<AudioSource>();
         explosion.GetComponent<SphereCollider>().radius = explosionRadius;
         _playerObject = GameObject.FindGameObjectWithTag("Player");
     }
@@ -84,6 +89,7 @@ public class JalepenoEntity : MonoBehaviour {
     /// </summary>
     /// <returns></returns>
     public IEnumerator Explode() {
+        _audio.PlayOneShot(_audio.clip);
         yield return new WaitForSeconds(_explosionDelay);
         explosion.Explode();
         yield return new WaitForSeconds(0.1f);
