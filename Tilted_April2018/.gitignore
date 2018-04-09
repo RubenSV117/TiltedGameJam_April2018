@@ -14,7 +14,6 @@
 /Assets/EditorVR*
 /Assets/OVR*
 /Assets/SteamVR*
-/Assets/Plugins*
 /Assets/TextMesh\ Pro*
 /Assets/ConsolePro*
 
@@ -40,4 +39,5 @@ sysinfo.txt
 
 # Builds
 *.apk
+*.unitypackage
 *.sublime-workspace
