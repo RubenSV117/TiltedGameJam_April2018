@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4456284277394242}
   - component: {fileID: 143419376675275332}
-  - component: {fileID: 114895388924773512}
+  - component: {fileID: 114228912830581118}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -96,7 +96,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1456139899457810}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 91, y: -117, z: 59}
+  m_LocalPosition: {x: 91, y: -116, z: 59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4017398340648418}
@@ -173,7 +173,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114895388924773512
+--- !u!114 &114228912830581118
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -181,11 +181,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1456139899457810}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76726271831e7704c88fac0db5ea6e89, type: 3}
+  m_Script: {fileID: 11500000, guid: fefc8ba44c063d749b80433bd60235a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 150
-  _turnSpeed: 0.01
+  _turnSpeed: 15
   _jumpStrength: 100
 --- !u!143 &143419376675275332
 CharacterController:
