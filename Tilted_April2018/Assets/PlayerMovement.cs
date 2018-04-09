@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -13,6 +14,10 @@ public class PlayerMovement : MonoBehaviour
     private float _turnSpeed = 5f;
     [SerializeField]
     private float _jumpStrength;
+
+    [SerializeField] private CinemachineVirtualCamera _vcam;
+
+    private Vector3 _lookDirection;
 
     private void Awake()
     {
@@ -28,15 +33,25 @@ public class PlayerMovement : MonoBehaviour
 
         var movement = new Vector3(horizontal, 0, vertical);
 
-        _characterController.SimpleMove(movement * Time.deltaTime * _moveSpeed);
+        _lookDirection = transform.position - _vcam.transform.position;
+
+        if(vertical > 0)
+        _characterController.SimpleMove(Vector3.Normalize(Camera.main.transform.forward
+                                        ) * Time.deltaTime * _moveSpeed);
+
+        else if (vertical < 0)
+            _characterController.SimpleMove(-Vector3.Normalize(Camera.main.transform.forward
+                                            ) * Time.deltaTime * _moveSpeed);
+
 
         _animator.SetFloat("Speed", movement.magnitude);
 
         if (movement.magnitude > 0)
         {
-            Quaternion newDirection = Quaternion.LookRotation(movement);
+            //Quaternion newDirection = Quaternion.LookRotation(movement);
 
-            transform.rotation = Quaternion.Slerp(transform.rotation, newDirection, Time.deltaTime * _turnSpeed);
+            //transform.rotation = Quaternion.Slerp(transform.rotation, newDirection, Time.deltaTime * _turnSpeed);
+            transform.forward = movement;
         }
 
         if (_characterController.isGrounded && Input.GetButton("Jump"))
