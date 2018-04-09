@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _characterController = GetComponent<CharacterController>();
         _animator = GetComponentInChildren<Animator>();
+       
     }
 
     private void Update()
@@ -38,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, newDirection, Time.deltaTime * _turnSpeed);
         }
 
-        if (Input.GetButtonDown("Jump"))
-            _characterController.SimpleMove(Vector3.up * Time.deltaTime * _jumpStrength);
+        if (_characterController.isGrounded && Input.GetButton("Jump"))
+            _characterController.Move(Vector3.up * Time.deltaTime * _jumpStrength);
     }
 }
