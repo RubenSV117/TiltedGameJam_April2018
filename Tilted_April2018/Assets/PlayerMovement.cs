@@ -51,7 +51,8 @@ public class PlayerMovement : MonoBehaviour
             //Quaternion newDirection = Quaternion.LookRotation(movement);
 
             //transform.rotation = Quaternion.Slerp(transform.rotation, newDirection, Time.deltaTime * _turnSpeed);
-            transform.forward = movement;
+            transform.forward = Camera.main.transform.forward;
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0);
         }
 
         if (_characterController.isGrounded && Input.GetButton("Jump"))
